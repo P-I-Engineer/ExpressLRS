@@ -254,35 +254,45 @@ PowerLevels_e POWERMGNT::setPower(PowerLevels_e Power)
     switch (Power)
     {
     case PWR_10mW:
-        #ifdef TARGET_HappyModel_ES24TX_2400_TX
+        #if defined(TARGET_DIY_2400_TX_ESP32_SX1280_E28_20S_100mw_via_UART)
+            Radio.SetOutputPower(-10);
+        #elif defined(TARGET_HappyModel_ES24TX_2400_TX)
             Radio.SetOutputPower(-17);
         #else
             Radio.SetOutputPower(-15);
         #endif
         break;
     case PWR_25mW:
-        #ifdef TARGET_HappyModel_ES24TX_2400_TX
+        #if defined(TARGET_DIY_2400_TX_ESP32_SX1280_E28_20S_100mw_via_UART)
+            Radio.SetOutputPower(-7);
+        #elif defined(TARGET_HappyModel_ES24TX_2400_TX)
             Radio.SetOutputPower(-13);
         #else
             Radio.SetOutputPower(-11);
         #endif
         break;
     case PWR_50mW:
-        #ifdef TARGET_HappyModel_ES24TX_2400_TX
+        #if defined(TARGET_DIY_2400_TX_ESP32_SX1280_E28_20S_100mw_via_UART)
+            Radio.SetOutputPower(-4);
+        #elif defined(TARGET_HappyModel_ES24TX_2400_TX)
             Radio.SetOutputPower(-9);
         #else
             Radio.SetOutputPower(-8);
         #endif
         break;
     case PWR_100mW:
-        #ifdef TARGET_HappyModel_ES24TX_2400_TX
+        #if defined(TARGET_DIY_2400_TX_ESP32_SX1280_E28_20S_100mw_via_UART)
+            Radio.SetOutputPower(-2);
+        #elif defined(TARGET_HappyModel_ES24TX_2400_TX)
             Radio.SetOutputPower(-6);
         #else
             Radio.SetOutputPower(-5);
         #endif
         break;
     case PWR_250mW:
-        #ifdef TARGET_HappyModel_ES24TX_2400_TX
+        #if defined(TARGET_DIY_2400_TX_ESP32_SX1280_E28_20S_100mw_via_UART)
+            break;
+        #elif defined(TARGET_HappyModel_ES24TX_2400_TX)
             Radio.SetOutputPower(-2);
         #else
             Radio.SetOutputPower(-1);
@@ -290,7 +300,9 @@ PowerLevels_e POWERMGNT::setPower(PowerLevels_e Power)
         break;
     default:
         Power = PWR_50mW;
-        #ifdef TARGET_HappyModel_ES24TX_2400_TX
+        #if defined(TARGET_DIY_2400_TX_ESP32_SX1280_E28_20S_100mw_via_UART)
+            Radio.SetOutputPower(-4);
+        #elif defined(TARGET_HappyModel_ES24TX_2400_TX)
             Radio.SetOutputPower(-9);
         #else
             Radio.SetOutputPower(-8);
